@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import ApolloClient from "apollo-client";
+import {ApolloProvider} from "react-apollo";
+import Books from "./components/Books";
+import {InMemoryCache} from "apollo-boost";
+import * as authLink from "apollo-link";
+import { createHttpLink } from 'apollo-link-http'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    const uri = "https://fullstack-engineer-test-n4ouilzfna-uc.a.run.app/graphql";
+    const httpLink = createHttpLink({ uri, fetch })
+
+    const client = new ApolloClient({
+      link: authLink.concat(httpLink),
+      cache: new InMemoryCache(),
+      uri
+  });
+
+    return (
+      <ApolloProvider client={client}>
+        <div id="posts">
+          <Books />
+        </div>
+      </ApolloProvider>
   );
 }
 
