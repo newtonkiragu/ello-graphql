@@ -1,21 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import ApolloClient from "apollo-client";
-import {ApolloProvider} from "react-apollo";
-import Books from "./components/Books";
+import { ApolloProvider } from "@apollo/client";
+import Books from "./components/books/Books";
 import {InMemoryCache} from "apollo-boost";
-import * as authLink from "apollo-link";
-import { createHttpLink } from 'apollo-link-http'
+import client from './ApolloCLient/client'
 
 function App() {
-    const uri = "https://fullstack-engineer-test-n4ouilzfna-uc.a.run.app/graphql";
-    const httpLink = createHttpLink({ uri, fetch })
-
-    const client = new ApolloClient({
-      link: authLink.concat(httpLink),
-      cache: new InMemoryCache(),
-      uri
-  });
 
     return (
       <ApolloProvider client={client}>
