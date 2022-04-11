@@ -1,5 +1,5 @@
 import {useMemo, useState} from "react";
-import Pagination from './Pagination'
+import Pagination from '../pagination/Pagination'
 
 import './Content.css'
 let PageSize = 2;
@@ -15,20 +15,26 @@ const Content = (props) => {
     }, [currentPage]);
 
     return(
-        <div>
-            {currentTokensData.map(item => {
+        <div className="container">
 
-                {item.tokens.map((tokens, i) => {
-                    console.log(tokens.value);
+            <div className="wrapper">
+                {currentTokensData.map(item => {
                     return(
-                        <div key={i}>
-                            <h1>item</h1>
-                            {/*<h1>{`${tokens.value}`}</h1>*/}
+                        <div className="post">
+                            {item.tokens.map((tokens) => {
+                                console.log(tokens.value);
+                                return(
+                                    <div>
+                                        <h1>{`${tokens.value}`}</h1>
+                                    </div>
+                                )
+                            })}
                         </div>
                     )
-                })};
 
-            })}
+
+                })}
+            </div>
             <Pagination
                 className="pagination-bar"
                 currentPage={currentPage}
@@ -37,6 +43,7 @@ const Content = (props) => {
                 onPageChange={page => setCurrentPage(page)}
             />
         </div>
+
     )
 
 };
