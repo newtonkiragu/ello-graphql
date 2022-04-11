@@ -9,7 +9,7 @@ const Modal = ({ children, customClass, show, closeCallback }) => (
         <div className="modal_content">
             {children}
             <button title="Close" className="close_modal" onClick={closeCallback}>
-                <i className="fas fa-times"></i>
+                close
             </button>
         </div>
     </div>
