@@ -1,5 +1,4 @@
-import { React, useMemo, useState } from 'react';
-import { Query } from "react-apollo";
+import { React, useMemo } from 'react';
 import gql from "graphql-tag";
 import Content from "../content/Content";
 import { useQuery } from '@apollo/client';

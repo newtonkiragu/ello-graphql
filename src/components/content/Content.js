@@ -1,11 +1,10 @@
-import {React, useMemo, useState, setState} from "react";
+import {React, useMemo, useState} from "react";
 import Pagination from '../pagination/Pagination'
 import Modal from '../modals/Modal'
 
 import './Content.css'
 let PageSize = 2;
 const Content = (props) => {
-    const pagesSize = props.data.pages.length
     const [currentPage, setCurrentPage] = useState(1);
     let [showModal, setShowModal] = useState({showModal: false});
     console.log(showModal);
