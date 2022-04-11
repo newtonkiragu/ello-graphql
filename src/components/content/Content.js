@@ -16,6 +16,13 @@ const Content = (props) => {
 
     return(
         <div className="container">
+            <Pagination
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={props.data.pages.length}
+                pageSize={PageSize}
+                onPageChange={page => setCurrentPage(page)}
+            />
 
             <div className="wrapper">
                 {currentTokensData.map(item => {
@@ -31,17 +38,9 @@ const Content = (props) => {
                             })}
                         </div>
                     )
-
-
                 })}
             </div>
-            <Pagination
-                className="pagination-bar"
-                currentPage={currentPage}
-                totalCount={props.data.pages.length}
-                pageSize={PageSize}
-                onPageChange={page => setCurrentPage(page)}
-            />
+
         </div>
 
     )

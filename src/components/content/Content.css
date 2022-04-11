@@ -1,20 +1,15 @@
-/*.grid {*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(1, 2fr);*/
-/*    gap: 10px;*/
-/*    grid-auto-rows: minmax(100px, auto);*/
-/*}*/
 .post {
     display: flex;
-    /*flex-direction: column;*/
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     box-shadow: 0 0 3px rgba(0, 0, 128, 0.3);
-    /*width: auto;*/
+    width: 100%;
     /*max-width: 50%;*/
     margin: 20px auto;
     padding: 15px 10px;
     background: #fff;
+    overflow-wrap: normal;
     /*overflow-x: scroll;*/
 
     /*grid-column: ;*/
@@ -34,11 +29,24 @@
 
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
     grid-auto-rows: minmax(100px, auto);
 }
 
 .container {
+    /*display: flex;*/
+    /*flex-direction: row;*/
     padding: 10px;
+    margin: 20px;
+}
+
+.pagination-bar {
+    position: relative;
+    /*align-content: center;*/
+}
+
+h1:hover {
+    color: aqua;
+    cursor: pointer;
 }
