@@ -42,8 +42,11 @@
 }
 
 .pagination-bar {
-    position: relative;
+    justify-content: center;
+    /*position: relative;*/
     /*align-content: center;*/
+    /*align-self: center;*/
+    /*left: 35%;*/
 }
 
 h1:hover {

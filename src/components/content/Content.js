@@ -1,11 +1,23 @@
-import {useMemo, useState} from "react";
+import {React, useMemo, useState, setState} from "react";
 import Pagination from '../pagination/Pagination'
+import Modal from '../modals/Modal'
 
 import './Content.css'
 let PageSize = 2;
 const Content = (props) => {
     const pagesSize = props.data.pages.length
     const [currentPage, setCurrentPage] = useState(1);
+    let [showModal, setShowModal] = useState({showModal: false});
+    console.log(showModal);
+
+    const toggleModal = () => {
+        // showModal = !showModal[0]
+        setShowModal(!showModal);
+        // console.log(this.setState())
+        // this.setState({showModal: })
+    }
+
+    // this.toggleModal = this.toggleModal.bind(this);
 
     const currentTokensData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
@@ -29,14 +41,24 @@ const Content = (props) => {
                     return(
                         <div className="post">
                             {item.tokens.map((tokens) => {
-                                console.log(tokens.value);
+                                console.log(tokens.position);
                                 return(
                                     <div>
-                                        <h1>{`${tokens.value}`}</h1>
+                                        <h1 onClick={toggleModal}>{`${tokens.value}`}</h1>
+
+                                        <Modal
+                                            show={showModal}
+                                            closeCallback={toggleModal}
+                                            customClass="custom_modal_class"
+                                        >
+                                           <h1>{`${tokens.position}`}</h1>
+                                        </Modal>
                                     </div>
                                 )
                             })}
                         </div>
+
+
                     )
                 })}
             </div>
