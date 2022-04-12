@@ -3,17 +3,23 @@ import PropTypes from 'prop-types';
 
 import './Modal.css'
 
-const Modal = ({ children, customClass, show, closeCallback }) => (
-    <div className={`modal ${customClass}`} style={{ display: show ? 'block' : 'none'}}>
-        <div className="overlay" onClick={closeCallback}></div>
-        <div className="modal_content">
-            {children}
-            <button title="Close" className="close_modal" onClick={closeCallback}>
-                close
-            </button>
+const Modal = ({ children, customClass, show, closeCallback }) => {
+    if (!show) {
+        return null
+    }
+    return (
+        <div className={`modal ${customClass}`}>
+            <div className="overlay" onClick={closeCallback}></div>
+            <div className="modal_content">
+                {children}
+                <button title="Close" className="close_modal" onClick={closeCallback}>
+                    close
+                </button>
+            </div>
         </div>
-    </div>
-);
+    )
+
+};
 
 Modal.propTypes = {
     children: PropTypes.element,
