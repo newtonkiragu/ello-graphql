@@ -6,17 +6,14 @@ import './Content.css'
 let PageSize = 2;
 const Content = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
-    let [showModal, setShowModal] = useState({showModal: false});
-    console.log(showModal);
+    let [show, setShow] = useState( false);
+    // const [value, setValue] = React.useState('');
 
     const toggleModal = () => {
-        // showModal = !showModal[0]
-        setShowModal(!showModal);
-        // console.log(this.setState())
-        // this.setState({showModal: })
+        setShow(!show);
+
     }
 
-    // this.toggleModal = this.toggleModal.bind(this);
 
     const currentTokensData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
@@ -39,18 +36,19 @@ const Content = (props) => {
                 {currentTokensData.map(item => {
                     return(
                         <div className="post">
-                            {item.tokens.map((tokens) => {
+                            {item.tokens.map((tokens, i) => {
                                 console.log(tokens.position);
                                 return(
-                                    <div>
-                                        <h1 onClick={toggleModal}>{`${tokens.value}`}</h1>
+                                    <div key={i}
+                                    >
+                                        <h1 onClick={() => setShow(true)}>{`${tokens.value}`}</h1>
 
                                         <Modal
-                                            show={showModal}
+                                            show={show}
                                             closeCallback={toggleModal}
                                             customClass="custom_modal_class"
                                         >
-                                           <h1>{`${tokens.position}`}</h1>
+                                           <h2><strong>{`${tokens.position}`}</strong></h2>
                                         </Modal>
                                     </div>
                                 )
