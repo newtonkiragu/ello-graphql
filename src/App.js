@@ -6,7 +6,8 @@ import client from './ApolloCLient/client';
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div id="posts">
+      <div>
+          <div className="title">MY BOOK</div>
         <Books />
       </div>
     </ApolloProvider>
