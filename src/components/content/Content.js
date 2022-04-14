@@ -1,18 +1,25 @@
 import {React, useMemo, useState} from "react";
-import Pagination from '../pagination/Pagination'
-import Modal from '../modals/Modal'
+import Pagination from '../pagination/Pagination';
+import Modal from '../modals/Modal';
 
-import './Content.css'
+import './Content.css';
+
 let PageSize = 2;
 const Content = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     let [show, setShow] = useState( false);
-    // const [value, setValue] = React.useState('');
+    let [modalData, setModalData] = useState();
 
     const toggleModal = () => {
         setShow(!show);
+        modalData = {};
+    };
 
-    }
+    const toggleModalData = (data) => {
+      setShow(true);
+      setModalData(data);
+
+  };
 
 
     const currentTokensData = useMemo(() => {
@@ -41,14 +48,14 @@ const Content = (props) => {
                                 return(
                                     <div key={i}
                                     >
-                                        <h1 onClick={() => setShow(true)}>{`${tokens.value}`}</h1>
+                                        <h1 onClick={() => toggleModalData(tokens)}>{`${tokens.value}`}</h1>
 
                                         <Modal
                                             show={show}
+                                            modalData={modalData}
                                             closeCallback={toggleModal}
                                             customClass="custom_modal_class"
                                         >
-                                           <h2><strong>{`${tokens.position}`}</strong></h2>
                                         </Modal>
                                     </div>
                                 )
