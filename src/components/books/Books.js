@@ -1,36 +1,32 @@
 import { React } from 'react';
-import gql from "graphql-tag";
-import Content from "../content/Content";
+import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
+import Content from '../content/Content';
 
-let PageSize = 2;
+const PageSize = 2;
 const query = gql`
   {
     book {
       pages {
         pageIndex
-        content,
+        content
         tokens {
-          position,
+          position
           value
         }
       }
     }
   }
 `;
-const Books = () => {
-    const {loading, data, error} = useQuery(query)
+function Books() {
+  const { loading, data, error } = useQuery(query);
 
-    if (loading) return <p>Loading Book ...</p>
+  if (loading) return <p>Loading Book ...</p>;
 
-    if (error) return <pre>{error.message}</pre>
+  if (error) return <pre>{error.message}</pre>;
 
-    if (data) {
-        return(
-            <Content data={data.book} pageSize={PageSize}/>
-        )
-    }
-
-
-};
+  if (data) {
+    return <Content data={data.book} pageSize={PageSize} />;
+  }
+}
 export default Books;
