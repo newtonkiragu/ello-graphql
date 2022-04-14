@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import './Modal.css'
 
-const Modal = ({ children, customClass, show, closeCallback }) => {
+const Modal = ({ modalData, customClass, show, closeCallback }) => {
+    console.log(modalData);
     if (!show) {
         return null
     }
@@ -11,7 +12,7 @@ const Modal = ({ children, customClass, show, closeCallback }) => {
         <div className={`modal ${customClass}`}>
             <div className="overlay" onClick={closeCallback}></div>
             <div className="modal_content">
-                {children}
+                <h2><strong>{`${modalData.position}`}</strong></h2>
                 <button title="Close" className="close_modal" onClick={closeCallback}>
                     close
                 </button>
@@ -22,14 +23,14 @@ const Modal = ({ children, customClass, show, closeCallback }) => {
 };
 
 Modal.propTypes = {
-    children: PropTypes.element,
+    modalData: PropTypes.element,
     customClass: PropTypes.string,
     show: PropTypes.bool,
     closeCallback: PropTypes.func,
 };
 
 Modal.defaultProps = {
-    children: <div>Empty Modal</div>,
+    modalData: <div>Empty Modal</div>,
     customClass: '',
     show: false,
     closeCallback: () => (false)
