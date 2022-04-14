@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ello-graphql/static/css/main.53b1126c.css",
-    "main.js": "/ello-graphql/static/js/main.311aa503.js",
+    "main.js": "/ello-graphql/static/js/main.69e0514c.js",
     "static/js/401.53a37883.chunk.js": "/ello-graphql/static/js/401.53a37883.chunk.js",
     "index.html": "/ello-graphql/index.html",
     "main.53b1126c.css.map": "/ello-graphql/static/css/main.53b1126c.css.map",
-    "main.311aa503.js.map": "/ello-graphql/static/js/main.311aa503.js.map",
+    "main.69e0514c.js.map": "/ello-graphql/static/js/main.69e0514c.js.map",
     "401.53a37883.chunk.js.map": "/ello-graphql/static/js/401.53a37883.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.53b1126c.css",
-    "static/js/main.311aa503.js"
+    "static/js/main.69e0514c.js"
   ]
 }
